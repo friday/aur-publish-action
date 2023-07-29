@@ -35,18 +35,20 @@ sed -i "s/pkgver=.*$/pkgver=$NEW_RELEASE/" PKGBUILD
 sed -i "s/pkgrel=.*$/pkgrel=1/" PKGBUILD
 updpkgsums
 
-# Test build
-makepkg -c
-
 # Update srcinfo
 makepkg --printsrcinfo > .SRCINFO
 
 
 echo "------------- BUILD DONE ----------------"
 
-# Update aur
+# Commit new version
 git add PKGBUILD .SRCINFO
 git commit --allow-empty  -m "Update to $NEW_RELEASE"
+
+# Install dependencies and test build
+makepkg -sf
+
+# push to aur
 git push
 
 echo "------------- PUBLISH DONE ----------------"
