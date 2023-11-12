@@ -4,7 +4,7 @@ RUN pacman -Sy && \
     pacman -Sy --noconfirm pacman-contrib openssh \
       git fakeroot binutils go-pie gcc awk binutils xz \
       libarchive bzip2 coreutils file findutils \
-      gettext grep gzip sed ncurses
+      gettext grep gzip sed ncurses base-devel
 
 RUN useradd -ms /bin/bash builder && \
     mkdir -p /home/builder/.ssh && \
