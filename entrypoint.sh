@@ -45,8 +45,8 @@ echo "------------- BUILD DONE ----------------"
 git add PKGBUILD .SRCINFO
 git commit --allow-empty  -m "Update to $NEW_RELEASE"
 
-# Install dependencies and test build
-makepkg -sf
+# Would be great to be able to install dependencies and test build, but the user isn't sudo
+# makepkg -sf
 
 # push to aur
 git push
